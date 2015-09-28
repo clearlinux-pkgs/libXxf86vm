@@ -4,7 +4,7 @@
 #
 Name     : libXxf86vm
 Version  : 1.1.4
-Release  : 3
+Release  : 4
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libXxf86vm-1.1.4.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libXxf86vm-1.1.4.tar.gz
 Summary  : XFree86 Video Mode Extension Library
