@@ -4,7 +4,7 @@
 #
 Name     : libXxf86vm
 Version  : 1.1.4
-Release  : 6
+Release  : 7
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libXxf86vm-1.1.4.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libXxf86vm-1.1.4.tar.gz
 Summary  : XFree86 Video Mode Extension Library
@@ -28,6 +28,7 @@ Xorg mailing list:
 Summary: dev components for the libXxf86vm package.
 Group: Development
 Requires: libXxf86vm-lib
+Provides: libXxf86vm-devel
 
 %description dev
 dev components for the libXxf86vm package.
@@ -53,10 +54,15 @@ lib components for the libXxf86vm package.
 %setup -q -n libXxf86vm-1.1.4
 
 %build
+export LANG=C
 %configure --disable-static
-make V=1 %{?_smp_mflags}
+make V=1  %{?_smp_mflags}
 
 %check
+export LANG=C
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
@@ -69,8 +75,8 @@ rm -rf %{buildroot}
 %files dev
 %defattr(-,root,root,-)
 /usr/include/X11/extensions/xf86vmode.h
-/usr/lib64/*.so
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libXxf86vm.so
+/usr/lib64/pkgconfig/xxf86vm.pc
 
 %files doc
 %defattr(-,root,root,-)
@@ -78,4 +84,5 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/libXxf86vm.so.1
+/usr/lib64/libXxf86vm.so.1.0.0
