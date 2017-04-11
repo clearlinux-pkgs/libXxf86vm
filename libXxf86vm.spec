@@ -6,7 +6,7 @@
 #
 Name     : libXxf86vm
 Version  : 1.1.4
-Release  : 9
+Release  : 10
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libXxf86vm-1.1.4.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libXxf86vm-1.1.4.tar.gz
 Source99 : http://xorg.freedesktop.org/releases/individual/lib/libXxf86vm-1.1.4.tar.gz.sig
@@ -90,11 +90,11 @@ popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1484496313
-export CFLAGS="$CFLAGS -Os -ffunction-sections "
-export FCFLAGS="$CFLAGS -Os -ffunction-sections "
-export FFLAGS="$CFLAGS -Os -ffunction-sections "
-export CXXFLAGS="$CXXFLAGS -Os -ffunction-sections "
+export SOURCE_DATE_EPOCH=1491879319
+export CFLAGS="$CFLAGS -Os -ffunction-sections -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -Os -ffunction-sections -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -Os -ffunction-sections -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -Os -ffunction-sections -fno-semantic-interposition "
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -114,7 +114,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1484496313
+export SOURCE_DATE_EPOCH=1491879319
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
